@@ -1,0 +1,2 @@
+This is my first CipherVault AI test file.
+My project uses AES-256-GCM encryption.
