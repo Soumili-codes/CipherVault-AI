@@ -1,224 +1,290 @@
 # 🔐 CipherVault AI
-### Your Files. Your Password. Your Control.
 
-**A secure, password-based file protection platform powered by modern cryptography, with a vision for AI-assisted cybersecurity.**
+<h3 align="center">SECURE YOUR FILES. PROTECT YOUR PRIVACY.</h3>
 
 <p align="center">
+  <strong>A modern password-based file encryption platform powered by strong cryptographic techniques.</strong>
+</p>
 
-**AES-256-GCM · Argon2id · Python · Streamlit**
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.14-blue?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/Streamlit-Framework-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" />
+  <img src="https://img.shields.io/badge/AES--256--GCM-Encryption-00A86B?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Argon2id-Key%20Derivation-7B42BC?style=for-the-badge" />
+</p>
 
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Working%20Prototype-success?style=flat-square" />
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=flat-square" />
+  <img src="https://img.shields.io/badge/Focus-Cybersecurity-blueviolet?style=flat-square" />
 </p>
 
 ---
 
-## 🚀 About the Project
+## 🌌 01. About the Project
 
-Digital files contain personal information, confidential documents and sensitive data. Yet protecting individual files is often either unnecessarily complicated or dependent on tools that users don't fully understand.
+**CipherVault AI** is a Python-based file encryption application designed to make digital file protection simple and accessible.
 
-**CipherVault AI** aims to make file protection simple, accessible and transparent.
+It combines authenticated encryption, password-based key derivation, and a user-friendly interface to help users protect sensitive digital information.
 
-It is a Python-based file encryption application that allows users to protect files using password-derived cryptographic keys and recover them when needed.
+Users can encrypt files, download encrypted versions, and recover their original files using the correct password.
 
-Instead of relying on a password alone as an encryption key, CipherVault uses **Argon2id for key derivation and AES-256-GCM for authenticated encryption**.
+### 🎯 The Mission
 
-The result is a practical cybersecurity application built around three principles:
-
-- **Confidentiality:** Keep file contents protected.
-- **Integrity:** Detect unauthorized modification of encrypted data.
-- **Usability:** Make secure file operations accessible through a simple interface.
+Make strong file encryption easier to understand and use without requiring advanced cybersecurity knowledge.
 
 ---
 
-## ✨ What Makes CipherVault Different?
+## 🚨 02. The Problem
 
-CipherVault focuses on combining a straightforward user experience with meaningful cryptographic engineering.
+Digital files often contain sensitive personal, academic, and professional information.
 
-| Capability | Implementation |
-|---|---|
-| Secure file encryption | AES-256-GCM |
-| Password-based key derivation | Argon2id |
-| Randomized encryption | Unique salt and nonce per operation |
-| Data integrity | Authenticated encryption |
-| File recovery | Password-based decryption |
-| User interface | Streamlit web application |
-| AI cybersecurity assistance | Local AI integration planned |
+Without appropriate protection, these files may be exposed to unauthorized access.
 
-### Core Features
+Traditional encryption tools can also be difficult for beginners to understand.
 
-**🔒 1. Password-Protected File Encryption**
+### 💡 Our Approach
 
-Encrypt uploaded files using a password-derived 256-bit key.
+CipherVault AI provides a straightforward workflow:
 
-**🔑 2. Memory-Hard Key Derivation**
-
-Argon2id derives encryption keys from passwords using configurable computational and memory costs.
-
-**🔓 3. Secure File Recovery**
-
-Decrypt previously encrypted files using the correct password.
-
-**🛡️ 4. Tamper Detection**
-
-AES-GCM authentication detects modified ciphertext or invalid authentication data.
-
-**🖥️ 5. Interactive Web Interface**
-
-A Streamlit-based interface provides separate encryption and decryption workflows.
-
-**🤖 6. AI-Assisted Cybersecurity — Planned**
-
-The project roadmap includes a local AI assistant designed to explain encryption concepts and answer general cybersecurity questions without requiring a paid external API.
+- Select a file.
+- Enter a password.
+- Encrypt the file.
+- Download the protected output.
+- Decrypt it whenever needed using the correct password.
 
 ---
 
-## ⚙️ How CipherVault Works
+## ✨ 03. Core Features
 
-<details>
-<summary><b>Encryption workflow</b></summary>
-
-1. The user selects a file.
-2. The user enters an encryption password.
-3. CipherVault generates a cryptographically random salt.
-4. Argon2id derives a 256-bit encryption key.
-5. A random 96-bit nonce is generated.
-6. AES-256-GCM encrypts and authenticates the file.
-7. The encrypted output is made available for download.
-
-</details>
-
-<details>
-<summary><b>Decryption workflow</b></summary>
-
-1. The user uploads a previously encrypted file.
-2. The original password is entered.
-3. CipherVault extracts the stored salt and nonce.
-4. Argon2id derives the corresponding encryption key.
-5. AES-256-GCM verifies the authentication tag.
-6. If authentication succeeds, the original file is recovered.
-7. If the password is incorrect or the encrypted data has been modified, decryption fails.
-
-</details>
+| Feature | Description |
+| --- | --- |
+| 🔐 AES-256-GCM | Authenticated file encryption |
+| 🛡️ Argon2id | Password-based cryptographic key derivation |
+| 🔑 Password Protection | Password required for decryption |
+| 🧩 Tampering Detection | Authentication verification |
+| 📁 File Management | Upload, encrypt, decrypt and download |
+| 🖥️ Streamlit UI | Simple interactive application |
 
 ---
 
-## 🧬 Security Architecture
+## 🏗️ 04. System Architecture
 
-CipherVault is built around established cryptographic primitives rather than custom encryption algorithms.
+The application follows a modular architecture that separates the user interface, file handling, and cryptographic operations.
 
-### 1. AES-256-GCM — Authenticated Encryption
+``` mermaid
+flowchart TD
+    A["👤 User"] --> B["🖥️ Streamlit Interface"]
+    B --> C["📁 File Manager"]
+    C --> D["🔐 Crypto Engine"]
+    D --> E["🧂 Random Salt"]
+    E --> F["Argon2id Key Derivation"]
+    F --> G["🔑 256-bit Encryption Key"]
+    G --> H["AES-256-GCM"]
+    H --> I["🔒 Encrypted File"]
+    I --> J["📥 Download"]
+```
 
-- Uses a 256-bit encryption key.
-- Provides confidentiality through authenticated encryption.
-- Generates an authentication tag to detect unauthorized changes.
-- Uses a 96-bit nonce for each encryption operation.
+### Architecture Components
 
-### 2. Argon2id — Password-Based Key Derivation
-
-- Designed to make password guessing more expensive.
-- Uses a random salt to prevent identical passwords from producing identical derived keys.
-- Applies configurable memory and computational costs.
-- Derives a cryptographic key rather than using the raw password directly.
-
-### 3. Security Design Principles
-
-- Cryptographically secure random generation.
-- Separate salt and nonce for each encryption operation.
-- Authentication verification during decryption.
-- No intentional storage of plaintext passwords.
-- Environment files and virtual environments excluded from Git tracking.
-
-**Important:** Encryption protects the contents of a file, but it does not automatically protect filenames, backups, passwords or an already compromised device.
+- **app.py:** Handles the Streamlit user interface.
+- **file\_manager.py:** Manages file encryption and decryption operations.
+- **crypto\_engine.py:** Implements cryptographic operations.
+- **ai\_assistant.py:** Contains the experimental AI assistant integration.
 
 ---
 
-## 🏗️ Technology Stack
+## 🔬 05. Cryptographic Architecture
+
+CipherVault AI uses two important cryptographic technologies.
+
+### AES-256-GCM
+
+AES-GCM provides authenticated encryption, protecting both file confidentiality and integrity.
+
+### Argon2id
+
+Argon2id derives a cryptographic key from the user's password using configurable computational and memory costs.
+
+### Encryption Workflow
+
+``` mermaid
+flowchart TD
+    A["📄 Original File"] --> B["🔑 User Password"]
+    B --> C["🧂 Generate Random Salt"]
+    C --> D["Argon2id"]
+    D --> E["32-byte Encryption Key"]
+    E --> F["AES-256-GCM"]
+    A --> F
+    F --> G["🔒 Encrypted Data"]
+    G --> H["📦 Store Salt + Nonce + Ciphertext"]
+```
+
+### Decryption Workflow
+
+``` mermaid
+flowchart TD
+    A["🔒 Encrypted File"] --> B["Extract Salt and Nonce"]
+    B --> C["Enter Original Password"]
+    C --> D["Argon2id"]
+    D --> E["Reconstruct Encryption Key"]
+    E --> F["AES-256-GCM Authentication"]
+    F --> G{"Authentication Successful?"}
+    G -->|Yes| H["📄 Recover Original File"]
+    G -->|No| I["❌ Reject Decryption"]
+```
+
+**Security considerations:** Random salts and nonces are used. Authentication must succeed before decrypted content is accepted. Users should keep their passwords secure because forgotten passwords cannot be recovered by the application.
+
+---
+
+## 🛠️ 06. Technology Stack
+
+<p align="center">
+  <img src="https://skillicons.dev/icons?i=python,vscode,github,git" />
+</p>
 
 | Technology | Purpose |
-|---|---|
+| --- | --- |
 | Python | Core application logic |
-| Streamlit | Interactive application interface |
-| Cryptography | AES-256-GCM encryption |
-| Argon2-CFFI | Argon2id key derivation |
-| Git & GitHub | Version control and project hosting |
-| Local AI runtime | Planned cybersecurity assistant |
+| Streamlit | Web interface |
+| Cryptography | AES-GCM implementation |
+| Argon2-cffi | Password-based key derivation |
+| Git | Version control |
+| GitHub | Source code hosting |
 
 ---
 
-## 📂 Project Architecture
+## 📂 07. Project Structure
 
-```text
+``` text
 CipherVault-AI/
 │
-├── app.py                 # Streamlit application
+├── app.py
 │
-├── crypto_engine.py       # Encryption and key derivation
-├── file_manager.py        # File encryption and recovery
-├── ai_assistant.py        # AI assistant integration
+├── crypto_engine.py
 │
-├── test_crypto.py         # Cryptography tests
-├── test_files.py          # File operation tests
+├── file_manager.py
 │
-├── samples/               # Sample test files
+├── ai_assistant.py
+│
+├── test_crypto.py
+│
+├── test_files.py
+│
+├── requirements.txt
+│
+├── README.md
 │
 ├── .gitignore
-├── requirements.txt
-├── README.md
-└── LICENSE
+│
+└── samples/
 ```
 
 ---
 
-## 🧪 Testing & Reliability
+## 🚀 08. Installation \& Setup
 
-Security-related functionality must be tested, not merely demonstrated.
+### Prerequisites
 
-The current project includes tests covering:
+- Python installed
+- Git installed
+- Visual Studio Code (recommended)
 
-| Test | Expected behaviour |
-|---|---|
-| Valid encryption | Produces encrypted output |
-| Valid decryption | Recovers original content |
-| Incorrect password | Rejects decryption |
-| Modified ciphertext | Authentication fails |
-| File round-trip | Recovered file matches original |
+### Step 1 — Clone Repository
 
-### Run the tests
-
-```bash
-python test_crypto.py
-python test_files.py
-```
-
-These tests cover core functionality; they are not a substitute for an independent security audit.
-
----
-
-## 💻 Getting Started
-
-### Requirements
-
-- Python 3.10 or newer
-- Git
-- Windows, macOS or Linux
-
-### 1. Clone the repository
-
-```bash
+``` bash
 git clone https://github.com/Soumili-codes/CipherVault-AI.git
 ```
 
-### 2. Navigate to the project
-
-```bash
+``` bash
 cd CipherVault-AI
 ```
 
-### 3. Create a virtual environment
+### Step 2 — Create Virtual Environment
 
-```bash
+``` bash
 python -m venv .venv
 ```
 
-### 4. Activate it
+Activate on Windows:
 
-**Windows PowerShell
+``` powershell
+.venv\Scripts\activate
+```
+
+### Step 3 — Install Dependencies
+
+``` bash
+pip install streamlit cryptography argon2-cffi
+```
+
+### Step 4 — Launch Application
+
+``` bash
+streamlit run app.py
+```
+
+Open the local URL displayed in the terminal.
+
+---
+
+## 🧪 09. Testing \& Validation
+
+The project has been tested for:
+
+- Successful file encryption.
+- Successful file decryption.
+- Original file recovery.
+- Incorrect password rejection.
+- Encrypted data tampering detection.
+
+The encryption and file-handling tests completed successfully during development.
+
+---
+
+## 🤖 10. AI Development Status
+
+An AI cybersecurity assistant was explored as part of the project concept.
+
+Gemini API integration was investigated, but API access and billing limitations prevented completion of a working AI model integration.
+
+The current prototype focuses on tested file encryption and decryption functionality. AI-powered assistance remains a future development objective.
+
+---
+
+## 🔮 11. Future Roadmap
+
+- [ ] Working AI-powered cybersecurity assistant.
+- [ ] File integrity and security reporting.
+- [ ] Improved file management.
+- [ ] Additional file format support.
+- [ ] Enhanced user experience.
+- [ ] Expanded security testing.
+
+---
+
+## 👩‍💻 12. Developer
+
+<p align="center">
+  <strong>SOUMILI SAIN</strong>
+  <br/>
+  Student Developer | Cybersecurity Enthusiast
+  <br/><br/>
+  <a href="https://github.com/Soumili-codes">
+    <img src="https://img.shields.io/badge/GitHub-Soumili--codes-181717?style=for-the-badge&logo=github" />
+  </a>
+</p>
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.
+
+---
+
+<p align="center">
+  <h3 align="center">🔐 CipherVault AI</h3>
+  <strong>Privacy is not a luxury. It is a necessity.</strong>
+</p>
